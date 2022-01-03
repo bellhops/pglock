@@ -136,16 +136,6 @@ func (c *Client) CreateTable() error {
 	return nil
 }
 
-// DropTable cleans up a PostgreSQL DB from what was created in the CreateTable
-// function
-func (c *Client) DropTable() error {
-	_, err := c.db.Exec("DROP TABLE " + c.tableName)
-	if err != nil {
-		return fmt.Errorf("cannot cleanup the database: %w", err)
-	}
-	return nil
-}
-
 // Acquire attempts to grab the lock with the given key name and wait until it
 // succeeds.
 func (c *Client) Acquire(name string, opts ...LockOption) (*Lock, error) {
